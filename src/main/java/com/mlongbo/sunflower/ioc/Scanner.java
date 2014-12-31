@@ -1,11 +1,14 @@
 package com.mlongbo.sunflower.ioc;
 
+import com.mlongbo.sunflower.ioc.annotation.Bean;
+
 import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.util.Enumeration;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -21,6 +24,13 @@ public class Scanner {
 
     public static void main(String[] args) {
         Set<Class<?>> classes = new Scanner().scanPackage("com.mlongbo.sunflower.ioc");
+
+        Iterator<Class<?>> iterator = classes.iterator();
+        while (iterator.hasNext()) {
+            Class<?> next = iterator.next();
+            Bean annotation = next.getAnnotation(Bean.class);
+            System.out.println(annotation.value());
+        }
 
         System.out.println(classes.size());
     }
