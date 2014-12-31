@@ -74,7 +74,7 @@ public class Scanner {
      * @param recursive
      * @param classes
      */
-    public void findAndAddClassesInPackageByFile(String packageName,
+    private void findAndAddClassesInPackageByFile(String packageName,
                                                         String packagePath, final boolean recursive, Set<Class<?>> classes) {
         // 获取此包的目录 建立一个File
         File dir = new File(packagePath);
