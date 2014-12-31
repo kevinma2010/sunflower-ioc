@@ -1,6 +1,6 @@
 package com.mlongbo.sunflower.ioc;
 
-import org.apache.commons.beanutils.PropertyUtils;
+//import org.apache.commons.beanutils.PropertyUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -68,12 +68,12 @@ public class Container
         if (parts.length > 1) {
             Object component = this.components.get(parts[0]);
             Object reference = this.components.get(value);
-            try
+           /* try
             {
                 PropertyUtils.setProperty(component, parts[1], reference);
             } catch (IllegalAccessException e) {
                 throw new Exception("cant not find bean: " + value, e);
-            }
+            }*/
         }
     }
 

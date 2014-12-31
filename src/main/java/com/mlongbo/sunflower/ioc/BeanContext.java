@@ -12,22 +12,18 @@ public class BeanContext {
     private static BeanContext me = new BeanContext();
     
     private Map<String, Object> beans = new HashMap<String, Object>();
-    
-    public void put(String name, Object bean) {
-        beans.put(name, bean);
-    }
+    private Map<String, String> dependencies = new HashMap<String, String>();
     
     public static BeanContext me() {
         return me;
         
     }
-    
-    public Object get(String name) {
-        return beans.get(name);
-        
+
+    public Map<String, Object> getBeans() {
+        return beans;
     }
-    public int getSize() {
-        return beans.size();
-        
+
+    public Map<String, String> getDependencies() {
+        return dependencies;
     }
 }
