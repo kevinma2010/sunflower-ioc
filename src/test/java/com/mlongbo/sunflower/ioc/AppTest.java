@@ -1,38 +1,25 @@
 package com.mlongbo.sunflower.ioc;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import com.mlongbo.sunflower.ioc.bean.Hi;
+import org.junit.Test;
+
+import java.util.Set;
 
 /**
- * Unit test for simple App.
+ * @author malongbo
+ * @date 2014/12/31
+ * @package com.mlongbo.sunflower.ioc
  */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
-    }
+public class AppTest {
+    
+    @Test
+    public void test() {
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
+        Set<Class<?>> classes = new Scanner().scanPackage("com.mlongbo.sunflower.ioc.bean");
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+        BeanContext.me().init(classes);
+
+        Hi hi = (Hi) BeanContext.me().getBean("beanA");
+        hi.sayHello();
     }
 }

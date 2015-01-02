@@ -8,9 +8,9 @@ import com.mlongbo.sunflower.ioc.annotation.Bean;
  * @package com.mlongbo.sunflower.ioc.bean
  */
 @Bean("beanB")
-public class BeanB {
+public class Person {
 
-    private String name = "Longbo Ma";
+    private String name = "LongboMa";
 
     public String getName() {
         return name;

@@ -9,21 +9,21 @@ import com.mlongbo.sunflower.ioc.annotation.Resource;
  * @package com.mlongbo.sunflower.ioc.bean
  */
 @Bean("beanA")
-public class BeanA {
+public class Hi {
     @Resource
-    private BeanB beanB;
+    private Person person;
 
     /**
-     * Say Hello*
+     * Say Hello
      * @return
      */
-    public String sayHello() {
-        
-        return "Hello " + beanB.getName();
+    public void sayHello() {
+
+        System.out.println("Hello " + person.getName());
         
     }
 
-    public void setBeanB(BeanB beanB) {
-        this.beanB = beanB;
+    public void setPerson(Person person) {
+        this.person = person;
     }
 }
