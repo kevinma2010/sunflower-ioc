@@ -8,9 +8,9 @@ import com.mlongbo.sunflower.ioc.annotation.Resource;
  * @date 2014/12/29
  * @package com.mlongbo.sunflower.ioc.bean
  */
-@Bean("beanA")
+@Bean("hi")
 public class Hi {
-    @Resource
+    @Resource("jack")
     private Person person;
 
     /**

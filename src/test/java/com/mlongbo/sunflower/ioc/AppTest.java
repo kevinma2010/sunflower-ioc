@@ -19,7 +19,7 @@ public class AppTest {
 
         BeanContext.me().init(classes);
 
-        Hi hi = (Hi) BeanContext.me().getBean("beanA");
+        Hi hi = (Hi) BeanContext.me().getBean("hi");
         hi.sayHello();
     }
 }

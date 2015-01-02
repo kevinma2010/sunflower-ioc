@@ -7,10 +7,10 @@ import com.mlongbo.sunflower.ioc.annotation.Bean;
  * @date 2014/12/29
  * @package com.mlongbo.sunflower.ioc.bean
  */
-@Bean("beanB")
+@Bean("jack")
 public class Person {
 
-    private String name = "LongboMa";
+    private String name = "jack";
 
     public String getName() {
         return name;
