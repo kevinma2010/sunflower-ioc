@@ -1,6 +1,7 @@
 package com.mlongbo.sunflower.ioc.util;
 
 /**
+ * 字符串工具类
  * @author malongbo
  * @date 15-1-2
  * @package com.mlongbo.sunflower.ioc.util
