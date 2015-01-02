@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
  * @date 2014/12/29
  * @package com.mlongbo.sunflower.ioc.annotation
  */
-@Target({FIELD, METHOD})
+@Target({FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Resource {
     
