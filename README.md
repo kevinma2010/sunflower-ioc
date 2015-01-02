@@ -9,42 +9,44 @@ sunflower-ioc
 在Field上使用`@Resource`标注依赖, 该field需要提供setter器.
 
 #### 示例
+```java
+@Bean("jack")
+public class Person {
 
-    @Bean("jack")
-    public class Person {
-    
-        private String name = "jack";
-    
-        public String getName() {
-            return name;
-        }
+    private String name = "jack";
+
+    public String getName() {
+        return name;
+    }
+}
+
+@Bean("hi")
+public class Hi {
+    @Resource("jack")
+    private Person person;
+
+    /**
+     * Say Hello
+     * @return
+     */
+    public void sayHello() {
+
+        System.out.println("Hello " + person.getName());
+
     }
 
-    @Bean("hi")
-    public class Hi {
-        @Resource("jack")
-        private Person person;
-
-        /**
-         * Say Hello
-         * @return
-         */
-        public void sayHello() {
-
-            System.out.println("Hello " + person.getName());
-
-        }
-
-        public void setPerson(Person person) {
-            this.person = person;
-        }
+    public void setPerson(Person person) {
+        this.person = person;
     }
-    
+}
+```
+
 #### 注入示例
+```java
+Set<Class<?>> classes = new Scanner().scanPackage("com.mlongbo.sunflower.ioc.bean");
 
-    Set<Class<?>> classes = new Scanner().scanPackage("com.mlongbo.sunflower.ioc.bean");
+BeanContext.me().init(classes);
 
-    BeanContext.me().init(classes);
-
-    Hi hi = (Hi) BeanContext.me().getBean("hi");
-    hi.sayHello();
+Hi hi = (Hi) BeanContext.me().getBean("hi");
+hi.sayHello();
+```
