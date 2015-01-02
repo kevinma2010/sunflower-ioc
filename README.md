@@ -27,7 +27,6 @@ public class Hi {
 
     /**
      * Say Hello
-     * @return
      */
     public void sayHello() {
 
