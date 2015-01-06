@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Sunflower-ioc by lenbo-ma</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Sunflower-ioc</h1>
+          <h2>Java编写的ioc工具</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/lenbo-ma/sunflower-ioc/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/lenbo-ma/sunflower-ioc/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/lenbo-ma/sunflower-ioc" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <p>这是一个基于注解的简易ioc工具, 为什么要重复造轮子呢, 只是为了好玩.<img class="emoji" title=":grin:" alt=":grin:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f601.png" height="20" width="20" align="absmiddle"></p>
+
+<h3>
+<a id="用法" class="anchor" href="#%E7%94%A8%E6%B3%95" aria-hidden="true"><span class="octicon octicon-link"></span></a>用法</h3>
+
+<p>在Class上使用<code>@Bean</code>标注一个对象需要容器管理;</p>
+
+<p>在Field上使用<code>@Resource</code>标注依赖, 该field需要提供setter器.</p>
+
+<h4>
+<a id="示例" class="anchor" href="#%E7%A4%BA%E4%BE%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>示例</h4>
+
+<div class="highlight highlight-java"><pre>@Bean(<span class="pl-s1"><span class="pl-pds">"</span>jack<span class="pl-pds">"</span></span>)
+<span class="pl-s">public</span> <span class="pl-s">class</span> <span class="pl-en">Person</span> {
+
+    <span class="pl-s">private</span> <span class="pl-stj">String</span> name <span class="pl-k">=</span> <span class="pl-s1"><span class="pl-pds">"</span>jack<span class="pl-pds">"</span></span>;
+
+    <span class="pl-s">public</span> <span class="pl-stj">String</span> <span class="pl-en">getName</span>() {
+        <span class="pl-k">return</span> name;
+    }
+}
+
+@Bean(<span class="pl-s1"><span class="pl-pds">"</span>hi<span class="pl-pds">"</span></span>)
+<span class="pl-s">public</span> <span class="pl-s">class</span> <span class="pl-en">Hi</span> {
+    <span class="pl-st">@Resource</span>(<span class="pl-s1"><span class="pl-pds">"</span>jack<span class="pl-pds">"</span></span>)
+    <span class="pl-s">private</span> <span class="pl-stj">Person</span> person;
+
+    <span class="pl-c">/**</span>
+<span class="pl-c">     * Say Hello</span>
+<span class="pl-c">     */</span>
+    <span class="pl-s">public</span> <span class="pl-st">void</span> <span class="pl-en">sayHello</span>() {
+
+        <span class="pl-stj">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s1"><span class="pl-pds">"</span>Hello <span class="pl-pds">"</span></span> <span class="pl-k">+</span> person<span class="pl-k">.</span>getName());
+
+    }
+
+    <span class="pl-s">public</span> <span class="pl-st">void</span> <span class="pl-en">setPerson</span>(<span class="pl-stj">Person</span> <span class="pl-v">person</span>) {
+        <span class="pl-v">this</span><span class="pl-k">.</span>person <span class="pl-k">=</span> person;
+    }
+}</pre></div>
+
+<h4>
+<a id="注入示例" class="anchor" href="#%E6%B3%A8%E5%85%A5%E7%A4%BA%E4%BE%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>注入示例</h4>
+
+<div class="highlight highlight-java"><pre><span class="pl-st">Set&lt;<span class="pl-st">Class&lt;?&gt;</span>&gt;</span> classes <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-stj">Scanner</span>()<span class="pl-k">.</span>scanPackage(<span class="pl-s1"><span class="pl-pds">"</span>com.mlongbo.sunflower.ioc.bean<span class="pl-pds">"</span></span>);
+
+<span class="pl-stj">BeanContext</span><span class="pl-k">.</span>me()<span class="pl-k">.</span>init(classes);
+
+<span class="pl-stj">Hi</span> hi <span class="pl-k">=</span> (<span class="pl-stj">Hi</span>) <span class="pl-stj">BeanContext</span><span class="pl-k">.</span>me()<span class="pl-k">.</span>getBean(<span class="pl-s1"><span class="pl-pds">"</span>hi<span class="pl-pds">"</span></span>);
+hi<span class="pl-k">.</span>sayHello();</pre></div>
+        </section>
+
+        <footer>
+          Sunflower-ioc is maintained by <a href="https://github.com/lenbo-ma">lenbo-ma</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
