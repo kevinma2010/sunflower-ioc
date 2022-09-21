@@ -81,6 +81,9 @@ public class Scanner {
             }
         });
         // 循环所有文件
+        if (null == dirFiles) {
+            return;
+        }
         for (File file : dirFiles) {
             // 如果是目录 则递归继续扫描
             if (file.isDirectory()) {
