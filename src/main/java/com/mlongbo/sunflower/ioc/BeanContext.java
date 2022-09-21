@@ -18,13 +18,13 @@ import java.util.Set;
  * @package com.mlongbo.sunflower.ioc
  */
 public class BeanContext {
-    private static BeanContext me = new BeanContext();//单例对象
+    private static final BeanContext me = new BeanContext();//单例对象
     private boolean isInitialized =  false;//是否已初始化
 
     //存放bean
-    private Map<String, Object> beans = new HashMap<String, Object>();
+    private final Map<String, Object> beans = new HashMap<String, Object>();
     //记录依赖关系
-    private Map<String, String> dependencies = new HashMap<String, String>();
+    private final Map<String, String> dependencies = new HashMap<String, String>();
 
     /**
      * 获取实体对象
