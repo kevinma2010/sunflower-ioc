@@ -76,9 +76,7 @@ public class BeanContext {
                 String beanName = annotation.value();
                 try {
                     this.beans.put(annotation.value(), item.newInstance());
-                } catch (InstantiationException e) {
-                    e.printStackTrace();
-                } catch (IllegalAccessException e) {
+                } catch (InstantiationException | IllegalAccessException e) {
                     e.printStackTrace();
                 }
 
