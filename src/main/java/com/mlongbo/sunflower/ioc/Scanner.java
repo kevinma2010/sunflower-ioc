@@ -5,6 +5,7 @@ import java.io.FileFilter;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Enumeration;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -41,7 +42,7 @@ public class Scanner {
                 String protocol = url.getProtocol();
                 if ("file".equals(protocol)) {
                     // 获取包的物理路径
-                    String filePath = URLDecoder.decode(url.getFile(), "UTF-8");
+                    String filePath = URLDecoder.decode(url.getFile(), StandardCharsets.UTF_8);
                     // 以文件的方式扫描整个包下的文件 并添加到集合中
                     findAndAddClassesInPackageByFile(packageName, filePath,
                             recursive, classes);
