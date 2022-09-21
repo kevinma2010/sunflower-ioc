@@ -68,9 +68,7 @@ public class BeanContext {
      */
     private void createBeansAndScanDependencies(Set<Class<?>> classes) {
 
-        Iterator<Class<?>> iterator = classes.iterator();
-        while (iterator.hasNext()) {
-            Class<?> item = iterator.next();
+        for (Class<?> item : classes) {
             Bean annotation = item.getAnnotation(Bean.class);
             if (annotation != null) {
                 String beanName = annotation.value();
