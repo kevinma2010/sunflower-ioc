@@ -85,8 +85,7 @@ public class BeanContext {
                  */
                 Field[] fields = item.getDeclaredFields();
 
-                for (int i = 0; i < fields.length; i++) {
-                    Field field = fields[i];
+                for (Field field : fields) {
                     Resource fieldAnnotation = field.getAnnotation(Resource.class);
                     if (fieldAnnotation != null) {
                         //获取依赖的bean的名称,如果为null,则使用字段名称
