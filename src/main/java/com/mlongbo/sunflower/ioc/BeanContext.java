@@ -117,11 +117,7 @@ public class BeanContext {
             String[] split = key.split("\\.");//数组第一个值表示bean对象名称,第二个值为字段属性名称
             try {
                 PropertyUtils.setProperty(beans.get(split[0]), split[1], beans.get(value));
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (InvocationTargetException e) {
-                e.printStackTrace();
-            } catch (NoSuchMethodException e) {
+            } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
                 e.printStackTrace();
             }
         }
