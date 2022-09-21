@@ -106,9 +106,7 @@ public class BeanContext {
      */
     private void injectBeans() {
 
-        Iterator<Map.Entry<String, String>> iterator = dependencies.entrySet().iterator();
-        while (iterator.hasNext()) {
-            Map.Entry<String, String> item = iterator.next();
+        for (Map.Entry<String, String> item : dependencies.entrySet()) {
             String key = item.getKey();
             String value = item.getValue();//依赖对象的值
             String[] split = key.split("\\.");//数组第一个值表示bean对象名称,第二个值为字段属性名称
