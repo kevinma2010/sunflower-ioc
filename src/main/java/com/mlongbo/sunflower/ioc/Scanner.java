@@ -29,7 +29,7 @@ public class Scanner {
         //是否循环搜索包
         boolean recursive = true;
         //存放扫描到的类
-        Set<Class<?>> classes = new LinkedHashSet<Class<?>>();
+        Set<Class<?>> classes = new LinkedHashSet<>();
 
         //将包名转换为文件路径
         String packageDirName = packageName.replace('.', '/');

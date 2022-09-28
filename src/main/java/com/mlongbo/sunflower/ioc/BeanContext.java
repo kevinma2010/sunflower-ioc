@@ -21,9 +21,9 @@ public class BeanContext {
     private boolean isInitialized =  false;//是否已初始化
 
     //存放bean
-    private final Map<String, Object> beans = new HashMap<String, Object>();
+    private final Map<String, Object> beans = new HashMap<>();
     //记录依赖关系
-    private final Map<String, String> dependencies = new HashMap<String, String>();
+    private final Map<String, String> dependencies = new HashMap<>();
 
     /**
      * 获取实体对象
